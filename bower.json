@@ -1,0 +1,24 @@
+{
+  "name": "kano-shared-storage-client",
+  "homepage": "https://github.com/KanoComputing/kano-shared-storage-client",
+  "authors": [
+    "Kano Computing"
+  ],
+  "description": "Shared storage client class for use in kano apps",
+  "main": "kano-shared-storage-client.html",
+  "keywords": [
+    "crosstorage",
+    "kano"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cross-storage": "^1.0.0"
+  }
+}
