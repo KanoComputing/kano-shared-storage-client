@@ -2,9 +2,10 @@
 <script>
     ((Kano) => {
         const keys = {
-            progress: "KW_PROGRESS",
-            session:  "KW_SESSION",
-            token:    "KW_TOKEN"
+            progress:       "KW_PROGRESS",
+            progressEvents: "KW_PROGESS_EVENTS",
+            session:        "KW_SESSION",
+            token:          "KW_TOKEN"
         };
         let keyMap, sharedStorage;
         /*
@@ -50,6 +51,33 @@
             deleteProgress(){
                 return sharedStorage.onConnect().then(function () {
                     return sharedStorage.del(keyMap.progress);
+                }.bind(this));
+            }
+            saveProgressEvent(progressEvent){
+                return sharedStorage.onConnect().then(function () {
+                    return sharedStorage.get(keyMap.progressEvents)
+                })
+                .then(function(progressEventListJson){
+                    return JSON.parse(progressEventListJson);
+                })
+                .then(function(progressEventList) {
+                    progressEventList = progressEventList || [];
+                    if (progressEvent.forEach){
+                        progressEventList = progressEventList.concat(progressEvent);
+                    } else {
+                        progressEventList.push(progressEvent);
+                    }
+                    return sharedStorage.set(keyMap.progressEvents, JSON.stringify(progressEventList));
+                }.bind(this));
+            }
+            getProgressEvents(){
+                return sharedStorage.onConnect().then(function(){
+                    return sharedStorage.get(keyMap.progressEvents);
+                });
+            }
+            deleteProgressEvents(){
+                return sharedStorage.onConnect().then(function () {
+                    return sharedStorage.del(keyMap.progressEvents);
                 }.bind(this));
             }
 
