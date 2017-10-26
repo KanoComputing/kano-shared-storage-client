@@ -7,10 +7,11 @@ The constructor of the `KanoSharedStorageClient` accepts an options dictionary w
 * keyMap: dictonary of keys mapping app objects to their local storage keys. Currently accepts key definitions for progress, session and token. Defaults to
 ```js
 {
-  progress:       "KW_PROGRESS",
-  progressEvents: "KW_PROGESS_EVENTS",
-  session:        "KW_SESSION",
-  token:          "KW_TOKEN"
+  progress:               "KW_PROGRESS",
+  progressEvents:         "KW_PROGESS_EVENTS",
+  session:                "KW_SESSION",
+  token:                  "KW_TOKEN",
+  localGamificationState: "KW_LOCAL_GAMIFICATION_STATE"
 }
 ```
  * sharedStorageURL: Url to cross-storage hub instance
@@ -34,6 +35,9 @@ KanoSharedStorageClient.deleteProgress
 KanoSharedStorageClient.saveProgressEvent
 KanoSharedStorageClient.getProgressEvents
 KanoSharedStorageClient.deleteProgressEvents
+KanoSharedStorageClient.saveLocalGamificationState
+KanoSharedStorageClient.getLocalGamificationState
+KanoSharedStorageClient.deleteLocalGamificationState
 KanoSharedStorageClient.get // Expose ZENDESK::CrossStorageClient:get
 KanoSharedStorageClient.set // Expose ZENDESK::CrossStorageClient:set
 ```
