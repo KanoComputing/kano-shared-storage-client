@@ -2,10 +2,11 @@
 <script>
     ((Kano) => {
         const keys = {
-            progress:       "KW_PROGRESS",
-            progressEvents: "KW_PROGRESS_EVENTS",
-            session:        "KW_SESSION",
-            token:          "KW_TOKEN"
+            progress:               "KW_PROGRESS",
+            progressEvents:         "KW_PROGRESS_EVENTS",
+            session:                "KW_SESSION",
+            token:                  "KW_TOKEN",
+            localGamificationState: "KW_LOCAL_GAMIFICATION_STATE"
         };
         let keyMap, sharedStorage;
         /*
@@ -97,6 +98,32 @@
                         //TODO: Remove this when we retire the old world app
                         return sharedStorage.del("KW_TOKENv2");
                     });
+                }.bind(this));
+            }
+
+            getLocalGamificationState() {
+                return sharedStorage.onConnect().then(function () {
+                    return sharedStorage.get(keyMap.localGamificationState);
+                }).then(function (res) {
+                    return JSON.parse(res);
+                });
+            }
+            setLocalGamificationState(localGamificationState) {
+                let stateString;
+
+                try {
+                    stateString = JSON.stringify(localGamificationState);
+                } catch (error) {
+                    stateString = localGamificationState;
+                }
+
+                return sharedStorage.onConnect().then(function () {
+                    return sharedStorage.set(keyMap.localGamificationState, stateString);
+                }.bind(this));
+            }
+            deleteLocalGamificationState() {
+                return sharedStorage.onConnect().then(function () {
+                    return sharedStorage.del(keyMap.localGamificationState);
                 }.bind(this));
             }
 
