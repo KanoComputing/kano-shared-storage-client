@@ -1,5 +1,4 @@
-
-import '../cross-storage/dist/client.min.js';
+import CrossStorageClient from './vendor/cross-storage-client.js';
 
 const keys = {
     progress:               "KW_PROGRESS",
