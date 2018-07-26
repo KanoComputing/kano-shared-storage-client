@@ -1,6 +1,6 @@
 {
   "name": "kano-shared-storage-client",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "main": "kano-shared-storage-client.js",
   "repository": "git@github.com:KanoComputing/kano-shared-storage-client.git",
   "author": "Paul Varache <paul@kano.me>",
